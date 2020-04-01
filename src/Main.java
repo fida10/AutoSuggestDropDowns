@@ -11,6 +11,6 @@ public class Main {
 
 		dr.get("https://ksrtc.in/oprs-web/");
 		HandlingAutoDropDown.selectInputBox(dr, "fromPlaceName", "Beng");
-		HandlingAutoDropDown.selectAutoDropDown(dr, "ui-id-1", "li", "BENGALURU INTERNAT");
+		HandlingAutoDropDown.selectAutoDropDown(dr, "ui-id-1", "li", "BENGALURU INTERNAT"); //this part is usually at the bottom of the page, play with html to find it.
 	}
 }
