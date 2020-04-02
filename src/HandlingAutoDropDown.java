@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,7 +12,7 @@ public class HandlingAutoDropDown {
 		WebElement inputBox = dr.findElement(By.id(inputBoxID));
 		a.moveToElement(inputBox).click().sendKeys(searchBoxKeys).build().perform();
 	}
-	public static void selectAutoDropDown(WebDriver dr, String autoDropDownID, String dropDownElementsTag, String desiredDropDownOpt){
+	public static void selectAutoDropDown(WebDriver dr, String autoDropDownID, String dropDownElementsTag, String desiredDropDownOpt, String inputBoxID, JavascriptExecutor js){
 		WebElement inputBox = dr.findElement(By.id(autoDropDownID));
 		List<WebElement> autoDropDownOptions = inputBox.findElements(By.tagName(dropDownElementsTag));
 		for(int i = 0; i < autoDropDownOptions.size(); i++){
@@ -23,5 +24,7 @@ public class HandlingAutoDropDown {
 				break;
 			}
 		}
+		String textInInputBox = (String) js.executeScript(String.format("return document.getElementById(\"%s\").value", inputBoxID));
+		System.out.println("Text in text box is " + textInInputBox);
 	}
 }
